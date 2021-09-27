@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" href="#" type="image/png">
+
+    <title>Dynamic Table</title>
+
+    <!--dynamic table-->
+    <link href="js/advanced-datatable/css/demo_page.css" rel="stylesheet" />
+    <link href="js/advanced-datatable/css/demo_table.css" rel="stylesheet" />
+    <link rel="stylesheet" href="js/data-tables/DT_bootstrap.css" />
+
+    <div th:include="common :: commonheader"></div>
+</head>
+
+<body class="sticky-header">
+
+<section>
+    <div th:replace="common :: #leftmenu"></div>
+
+
+    <!-- main content start-->
+    <div class="main-content" >
+
+        <div th:replace="common :: #headermenu"></div>
+
+        <!-- page heading start-->
+        <div class="page-heading">
+            <h3>
+                Dynamic Table
+            </h3>
+            <ul class="breadcrumb">
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#">Data Tables</a>
+                </li>
+                <li class="active"> Dynamic Table </li>
+            </ul>
+        </div>
+        <!-- page heading end-->
+
+        <!--body wrapper start-->
+        <div class="wrapper">
+            <div class="row">
+                <div class="col-sm-12">
+                    <section class="panel">
+                        <header class="panel-heading">
+                            Dynamic Table
+                            <span class="tools pull-right">
+                <a href="javascript:;" class="fa fa-chevron-down"></a>
+                <a href="javascript:;" class="fa fa-times"></a>
+             </span>
+                        </header>
+                        <div class="panel-body">
+                            <div class="adv-table">
+                                <table  class="display table table-bordered table-striped" id="dynamic-table">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>id</th>
+                                        <th>name</th>
+                                        <th>age</th>
+                                        <th>email</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <!--<tr class="gradeX" th:each="user,stat : ${page.records}">-->
+                                    <tr class="gradeX" th:each="user,stat : ${users}">
+                                        <td th:text="${stat.count}">Trident</td>
+                                        <td th:text="${user.id}">Trident</td>
+                                        <td th:text="${user.name}">Internet
+                                            Explorer 4.0
+                                        </td>
+                                        <td th:text="${user.age}">Win 95+</td>
+                                        <td th:text="${user.email}">4</td>
+                                        <td class="center hidden-phone">
+                                            <a class="btn btn-warning btn-sm"  data-toggle="modal" data-target="#myModal" type="button">修改</a>
+                                            <a class="btn btn-danger btn-sm" th:href="@{/deleteUser/{id}(id=${user.id})}" type="button">删除</a>
+                                        </td>
+
+                                    </tfoot>
+                                </table>
+                                <!-- 模态框（Modal） -->
+                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                    &times;
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel">
+                                                    模态框（Modal）标题
+                                                </h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <label for="exampleInputEmail1">id</label>
+                                                <input type="email" class="form-control" id="exampleInputId" placeholder="Enter id">
+                                                <label for="exampleInputEmail1">name</label>
+                                                <input type="email" class="form-control" id="exampleInputNname" placeholder="Enter name">
+                                                <label for="exampleInputEmail1">age</label>
+                                                <input type="email" class="form-control" id="exampleInputAge" placeholder="Enter age">
+                                                <label for="exampleInputEmail1">Email address</label>
+                                                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                                </button>
+                                                <button type="button" class="btn btn-primary">
+                                                    提交更改
+                                                </button>
+                                            </div>
+                                        </div><!-- /.modal-content -->
+                                    </div><!-- /.modal -->
+                                </div>
+</body>
+
+
+
+
+
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <!--body wrapper end-->
+
+        <!--footer section start-->
+        <footer>
+            2014 &copy; AdminEx by <a href="http://www.mycodes.net/" target="_blank">源码之家</a>
+        </footer>
+        <!--footer section end-->
+
+
+    </div>
+    <!-- main content end-->
+</section>
+
+<!-- Placed js at the end of the document so the pages load faster -->
+<div th:replace="common :: #commonscript"></div>
+
+<!--dynamic table-->
+<script type="text/javascript" language="javascript" src="js/advanced-datatable/js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="js/data-tables/DT_bootstrap.js"></script>
+<!--dynamic table initialization -->
+<script src="js/dynamic_table_init.js"></script>
+
+<!--common scripts for all pages-->
+<!--<script src="js/scripts.js"></script>-->
+
+</body>
+</html>
